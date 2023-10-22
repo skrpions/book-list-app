@@ -51,27 +51,19 @@ describe('CartComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  /* public getTotalPrice(listCartBook: Book[]): number {
-    let totalPrice = 0;
-    listCartBook.forEach((book: Book) => {
-      totalPrice += book.amount * book.price;
-    });
-    return totalPrice;
-  } */
-
-  it('getTotalPrice() should return an amount', () => {
+  it('getTotalPrice(): number, should return an amount', () => {
 
     const totalPrice = component.getTotalPrice(listBooks);
     expect(totalPrice).toBeGreaterThan(0); // El valor retornado es mayor que cero
     expect(totalPrice).not.toBeNull(); // El valor retornado no es null
   });
 
-  it('getTotalPrice() should return 0 for an empty list of books', () => {
+  it('getTotalPrice(): number, should return 0 for an empty list of books', () => {
     const totalPrice = component.getTotalPrice([]);
     expect(totalPrice).toBe(0);
   });
 
-  it('getTotalPrice() should return the correct total price for a list of books', () => {
+  it('getTotalPrice(): number, should return the correct total price for a list of books', () => {
     const totalPrice = component.getTotalPrice(listBooks);
     expect(totalPrice).toEqual(5);
   });
