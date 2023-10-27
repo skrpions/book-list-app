@@ -54,7 +54,8 @@ describe('CartComponent', () => {
       fixture.detectChanges();
 
       // Instantiate the services in each iteration
-      _bookService = fixture.debugElement.injector.get(BookService);
+      _bookService = TestBed.inject(BookService);
+      //_bookService = fixture.debugElement.injector.get(BookService);
 
       // Útil para evitar que el ngOnInit de la clase no llame directamente al service getBooksFromCart()
       spyOn(_bookService, 'getBooksFromCart').and.callFake(() => listBooks)
@@ -124,19 +125,6 @@ describe('CartComponent', () => {
 
   });
 
-  /* public onClearBooks(): void {
-    if (this.listCartBook && this.listCartBook.length > 0) {
-      this._clearListCartBook();
-    } else {
-       console.log("No books available");
-    }
-  }
-
-  private _clearListCartBook() {
-    this.listCartBook = [];
-    this._bookService.removeBooksFromCart();
-  } */
-
   it('public onClearBooks(): void, should works correctly', () => {
 
     const spy1 = spyOn((component as any), '_clearListCartBook').and.callThrough();
@@ -149,11 +137,6 @@ describe('CartComponent', () => {
     expect(spy1).toHaveBeenCalled();
     expect(spy2).toHaveBeenCalled();
   });
-
-  /* private _clearListCartBook() {
-    this.listCartBook = [];
-    this._bookService.removeBooksFromCart();
-  } */
 
   it('private _clearListCartBook(): void, should works correctly', () => {
 

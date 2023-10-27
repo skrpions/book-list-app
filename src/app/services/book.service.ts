@@ -20,6 +20,11 @@ export class BookService {
     return this._httpClient.get<Book[]>(url);
   }
 
+  public getBooksActivos(): Observable<Book[]> {
+    const url: string = environment.API_REST_URL + `/book`;
+    return this._httpClient.get<Book[]>(url);
+  }
+
   public getBooksFromCart(): Book[] {
     let listBook: Book[] = JSON.parse(localStorage.getItem('listCartBook'));
     if (listBook === null) {
@@ -37,13 +42,13 @@ export class BookService {
     if (listBook === null) { // Create a list with the book
       book.amount = 1;
       listBook = [ book ];
-    } else { 
+    } else {
       const index = listBook.findIndex((item: Book) => {
         return book.id === item.id;
       });
       if (index !== -1) { // Update the quantity in the existing book
         listBook[index].amount++;
-      } else { 
+      } else {
         book.amount = 1;
         listBook.push(book);
       }
