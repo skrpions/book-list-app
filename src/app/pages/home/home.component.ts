@@ -31,13 +31,4 @@ export class HomeComponent implements OnInit {
 
   }
 
-  public getBooksActivos(): void {
-
-    this.bookService.getBooksActivos().pipe(take(1)).subscribe((resp: Book[]) => {
-      this.listBook = resp;
-    });
-  }
-
-
-
 }

@@ -51,7 +51,7 @@ describe('HomeComponent', () => {
       fixture.detectChanges();
 
       // Instantiate the services in each iteration
-       _bookService = TestBed.inject(BookService);;
+       _bookService = TestBed.inject(BookService);
   });
 
   it('Should create component', () => {

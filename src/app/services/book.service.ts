@@ -20,11 +20,6 @@ export class BookService {
     return this._httpClient.get<Book[]>(url);
   }
 
-  public getBooksActivos(): Observable<Book[]> {
-    const url: string = environment.API_REST_URL + `/book`;
-    return this._httpClient.get<Book[]>(url);
-  }
-
   public getBooksFromCart(): Book[] {
     let listBook: Book[] = JSON.parse(localStorage.getItem('listCartBook'));
     if (listBook === null) {
